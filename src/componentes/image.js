@@ -25,7 +25,7 @@ const ImageJSX = styled.img`
     margin-left: 10px;
     margin-top: 10px;
     height: 90px;
-    width: 90px;
+    width: 80px;
         
     .none{
         display: none;
