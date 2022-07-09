@@ -51,7 +51,7 @@ function SignUp(){
                 loading: false,
                 className: ''
             });
-            navigate('/');
+            navigate('/sign-in');
         }).catch((erro) => {
             console.log({message: 'Deu ruim', erro});
             setloadingData({
@@ -85,81 +85,83 @@ function SignUp(){
     }, [data.confirmaPassword, data.password]);
 
     return(
-        <CadastroContainer>
-            <h1>12Parsecs</h1>
-            <Form onSubmit={signUp}>
-                <input
-                    type="text"
-                    disabled={loadingData.loading}
-                    className={loadingData.className}
-                    placeholder="Nome"
-                    required value={data.name}
-                    onChange={(e) => setdata({...data, name: e.target.value})}
-                />
-                <input
-                    type="email"
-                    disabled={loadingData.loading}
-                    className={loadingData.className}
-                    placeholder="E-mail"
-                    required value={data.email}
-                    onChange={(e) => setdata({...data, email: e.target.value})}
-                />
-                <input
-                    type="password"
-                    disabled={loadingData.loading}
-                    className={loadingData.className}
-                    placeholder="Senha"
-                    required value={data.password}
-                    onChange={(e) => setdata({...data, password: e.target.value})}
-                />
-                <input
-                    type="password"
-                    disabled={loadingData.loading}
-                    className={loadingData.className}
-                    placeholder="Confirme a senha"
-                    required value={data.confirmaPassword}
-                    onChange={(e) => setdata({...data, confirmaPassword: e.target.value})}
-                />
+        <>
+            <Topo>
+                <Link to="/">
+                    <ion-icon name="home-outline"></ion-icon>
+                </Link>
+                <h1>12 Parsecs</h1>
+                <Link to="/carrinho">
+                    <ion-icon name="cart-outline"></ion-icon>
+                </Link>
+                
+            </Topo>
+            <CadastroContainer>
+                <Form onSubmit={signUp}>
+                    <input
+                        type="text"
+                        disabled={loadingData.loading}
+                        className={loadingData.className}
+                        placeholder="Nome"
+                        required value={data.name}
+                        onChange={(e) => setdata({...data, name: e.target.value})}
+                    />
+                    <input
+                        type="email"
+                        disabled={loadingData.loading}
+                        className={loadingData.className}
+                        placeholder="E-mail"
+                        required value={data.email}
+                        onChange={(e) => setdata({...data, email: e.target.value})}
+                    />
+                    <input
+                        type="password"
+                        disabled={loadingData.loading}
+                        className={loadingData.className}
+                        placeholder="Senha"
+                        required value={data.password}
+                        onChange={(e) => setdata({...data, password: e.target.value})}
+                    />
+                    <input
+                        type="password"
+                        disabled={loadingData.loading}
+                        className={loadingData.className}
+                        placeholder="Confirme a senha"
+                        required value={data.confirmaPassword}
+                        onChange={(e) => setdata({...data, confirmaPassword: e.target.value})}
+                    />
 
-                {/* {data.erro ? (
-                    <span className="msg">As senhas não são iguais</span>
-                ) : null} */}
+                    {/* {data.erro ? (
+                        <span className="msg">As senhas não são iguais</span>
+                    ) : null} */}
 
-                {loadingData.loading === false ? (
-                    <button type="submit" className={buttonSignUp.className}>
-                        Cadastrar
-                    </button>
-                ) : (
-                    <button type="button" disabled>
-                        <ThreeDots
-                            color="rgba(255, 255, 255, 1)"
-                            height={13}
-                            width={51}
-                        />
-                    </button>
-                )}
-            </Form>
-            <Link to="/">
-            <p>já tem conta? Entre agora!</p>
-            </Link>
-        </CadastroContainer>
+                    {loadingData.loading === false ? (
+                        <button type="submit" className={buttonSignUp.className}>
+                            Cadastrar
+                        </button>
+                    ) : (
+                        <button type="button" disabled>
+                            <ThreeDots
+                                color="rgba(255, 255, 255, 1)"
+                                height={13}
+                                width={51}
+                            />
+                        </button>
+                    )}
+                </Form>
+                <Link to="/sign-in">
+                    <p>já tem conta? Entre agora!</p>
+                </Link>
+            </CadastroContainer>
+        </>
+        
     )
 
 }
 
+
 const CadastroContainer =  styled.div`
-    
-    h1 {
-        font-family: 'Saira Stencil One';
-        font-style: normal;
-        font-weight: 400;
-        font-size: 32px;
-        line-height: 50px;
-        color: #ffffff;
-        margin-top: 95px;
-        margin-bottom: 42px;
-        text-align: center;
-    }
+
     p {
         color: #ffffff;
         font-size: 15px;
@@ -170,10 +172,37 @@ const CadastroContainer =  styled.div`
     }
 `;
 
+const Topo = styled.header`
+   display: fixed;
+   height: 60px;
+   width: 100%;
+   margin: auto; 
+   display: flex;
+   justify-content: space-around;
+   align-items: center;
+   background-color: black;
+
+   ion-icon{
+    color: white;
+    font-size: 30px;
+   }
+   
+   
+   h1{
+    font-family: 'Raleway';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 26px;
+    line-height: 31px;
+    color: #FFFFFF;
+   }
+ `;
+
 const Form = styled.form`
 display: flex;
 flex-direction: column;
 align-items: center;
+margin-top: 95px;
 
 input {
     width: 326px;

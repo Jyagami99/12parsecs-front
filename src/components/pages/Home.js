@@ -1,7 +1,7 @@
 function Home() {
   return (
     <>
-      <h1>BOM DIA</h1>
+      <h1>Sou Home</h1>
     </>
   );
 }
