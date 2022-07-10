@@ -1,28 +1,12 @@
-import React, { useContext } from "react";
+import React from "react";
 import styled from 'styled-components';
-import { useNavigate } from "react-router-dom";
-import Loader from "./loader";
-import UserContext from "./context";
 import Produto from "./produto";
-
+import Topo from "./topo.js";
 
 export default function Home() {
   
-    const [load, setLoad] = React.useState(false);
     const [clicado, setClicado] = React.useState(false);
-    const [qtd, setQtd] = React.useState(0);
-  
-    const {user} = useContext(UserContext);
-   
-    let navigate = useNavigate();
      
-    function mais(){
-      setQtd(qtd+1);
-    }
-    function menos(){
-      setQtd(qtd-1);
-    }
-
     function clica(){
         if(clicado){
             setClicado(false);
@@ -43,11 +27,7 @@ export default function Home() {
 
     return (
         <>
-      <Topo>
-          <ion-icon name="home-outline"></ion-icon>
-          <h1>12 Parsecs</h1>
-          <ion-icon name="cart-outline"></ion-icon>
-      </Topo>
+      <Topo/>
       <Container>
       <Filtros className={(clicado)? "aparece":""}>
       <div onClick={clica}>
@@ -62,42 +42,16 @@ export default function Home() {
             Todos os produtos
         </h2>
         <Produtos>
-          <Produto name = {product.name} images ={product.images} price ={product.price}/>
-          <Produto/>
-          <Produto/>
-          <Produto/>
+          <Produto name = {product.name} image ={product.images[0]} price ={product.price}/>
+          <Produto name = {product.name} image ={product.images[0]} price ={product.price}/>
+          <Produto name = {product.name} image ={product.images[0]} price ={product.price}/>
+          <Produto name = {product.name} image ={product.images[0]} price ={product.price}/>
         </Produtos>
       </AreaProdutos>
       </Container>
       </>
     );
   }
-
-
-  const Topo = styled.header`
-   display: fixed;
-   height: 60px;
-   width: 100%;
-   margin: auto; 
-   display: flex;
-   justify-content: space-around;
-   align-items: center;
-   background-color: black;
-
-   ion-icon{
-    color: white;
-    font-size: 30px;
-   }
-   
-   h1{
-    font-family: 'Raleway';
-    font-style: normal;
-    font-weight: 700;
-    font-size: 26px;
-    line-height: 31px;
-    color: #FFFFFF;
-   }
- `;
 
   const Filtros = styled.div`
     width: 400px;
