@@ -2,6 +2,7 @@ import React from "react";
 import styled from 'styled-components';
 import Produto from "./produto";
 import Topo from "./topo.js";
+import Loader from "./loader";
 
 export default function Home() {
   
@@ -15,7 +16,7 @@ export default function Home() {
         }
     }
     
-    let product = {
+    let products = [{
       name: "Fone AKG",
       images: [ 
         "https://cf.shopee.com.br/file/267d861d99ed53f0ff73283fffd041bf",
@@ -23,7 +24,25 @@ export default function Home() {
         "https://cf.shopee.com.br/file/267d861d99ed53f0ff73283fffd041bf"
       ],
       price: 12.92
-    }
+    },
+    {
+      name: "Fone AKG",
+      images: [ 
+        "https://cf.shopee.com.br/file/267d861d99ed53f0ff73283fffd041bf",
+        "https://m.media-amazon.com/images/I/61OnK6q6skL._AC_SX425_.jpg",
+        "https://cf.shopee.com.br/file/267d861d99ed53f0ff73283fffd041bf"
+      ],
+      price: 12.92
+    },
+    {
+      name: "Fone AKG",
+      images: [ 
+        "https://cf.shopee.com.br/file/267d861d99ed53f0ff73283fffd041bf",
+        "https://m.media-amazon.com/images/I/61OnK6q6skL._AC_SX425_.jpg",
+        "https://cf.shopee.com.br/file/267d861d99ed53f0ff73283fffd041bf"
+      ],
+      price: 12.92
+    }]
 
     return (
         <>
@@ -42,10 +61,8 @@ export default function Home() {
             Todos os produtos
         </h2>
         <Produtos>
-          <Produto name = {product.name} image ={product.images[0]} price ={product.price}/>
-          <Produto name = {product.name} image ={product.images[0]} price ={product.price}/>
-          <Produto name = {product.name} image ={product.images[0]} price ={product.price}/>
-          <Produto name = {product.name} image ={product.images[0]} price ={product.price}/>
+          {(products.length !==0)?
+          products.map((product, index) => <Produto key = {index} name = {product.name} image ={product.images[0]} price ={product.price}/>): <Loader/>}
         </Produtos>
       </AreaProdutos>
       </Container>
