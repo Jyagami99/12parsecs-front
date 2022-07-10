@@ -38,7 +38,7 @@ function SignUp(){
             className: 'inputDesabilitado'
         });
 
-        const URL = `http://localhost:5000/cadastro`;
+        const URL = `https://project12parsecs.herokuapp.com/sign-up`;
 
         axios.post(URL,{
             name: data.name,
@@ -93,8 +93,7 @@ function SignUp(){
                 <h1>12 Parsecs</h1>
                 <Link to="/carrinho">
                     <ion-icon name="cart-outline"></ion-icon>
-                </Link>
-                
+                </Link>  
             </Topo>
             <CadastroContainer>
                 <Form onSubmit={signUp}>
@@ -131,11 +130,11 @@ function SignUp(){
                         onChange={(e) => setdata({...data, confirmaPassword: e.target.value})}
                     />
 
-                    {/* {data.erro ? (
+                    {data.erro ? (
                         <span className="msg">As senhas não são iguais</span>
-                    ) : null} */}
+                    ) : null}
 
-                    {loadingData.loading === false ? (
+                    {loadingData.loading === false ?  (
                         <button type="submit" className={buttonSignUp.className}>
                             Cadastrar
                         </button>
