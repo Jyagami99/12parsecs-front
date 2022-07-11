@@ -166,4 +166,4 @@ const Form = styled.form`
   }
 `;
 
-export default SignIn;
+export { SignIn };

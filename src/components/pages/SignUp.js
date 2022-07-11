@@ -239,4 +239,4 @@ const Form = styled.form`
   }
 `;
 
-export default SignUp;
+export { SignUp };

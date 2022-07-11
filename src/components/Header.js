@@ -8,7 +8,7 @@ function Header() {
         <ion-icon name="home-outline"></ion-icon>
       </Link>
       <h1>12 Parsecs</h1>
-      <Link to="/carrinho">
+      <Link to="/checkout">
         <ion-icon name="cart-outline"></ion-icon>
       </Link>
     </Topo>
