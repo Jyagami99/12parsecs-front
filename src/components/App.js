@@ -13,7 +13,6 @@ function App() {
     ? JSON.parse(localStorage.getItem('userdata'))
     : null
 );
-
   return(
     <UserContext.Provider value={{user, setUser}}>
       <BrowserRouter>
