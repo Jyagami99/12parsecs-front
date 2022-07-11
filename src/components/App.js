@@ -1,29 +1,31 @@
-import { SignUp } from "./pages/SignUp";
-import { SignIn } from "./pages/SignIn";
-import { useState } from "react";
-import { Routes, Route } from "react-router-dom";
-import { BrowserRouter } from "react-router-dom";
-import GlobalStyles from "../assets/GlobalStyles";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import React, {useState} from "react";
+import Home from "./pages/home";
+import UserContext from "./context.js";
+import ProdutoComprar from "./pages/produtocomprar";
+import SignIn from "./pages/signin";
+import SignUp from "./pages/signup";
+import Checkout from "./pages/checkout";
 
-import UserContext from "./context/userContext";
-
-function App() {
+export default function App() {
   const [user, setUser] = useState(
     localStorage.getItem("userdata")
       ? JSON.parse(localStorage.getItem("userdata"))
       : null
   );
+  const [carrinho, setCarrinho] = useState([]);
+
   return (
-    <UserContext.Provider value={{ user, setUser }}>
+    <UserContext.Provider value = {{user, setUser, carrinho, setCarrinho}}>
       <BrowserRouter>
-        <GlobalStyles />
         <Routes>
+          <Route path="" element={<Home/>}/>
           <Route path="/sign-up" element={<SignUp />} />
           <Route path="/sign-in" element={<SignIn />} />
+          <Route path="/produto/:idproduto" element={<ProdutoComprar/>}/>
+          <Route path="/checkout" element={<Checkout />} />
         </Routes>
       </BrowserRouter>
     </UserContext.Provider>
   );
 }
-
-export default App;
