@@ -9,7 +9,7 @@ import UserContext from "./context";
 export default function ProdutoComprar() {
   
   const [principal, setPrincipal] = React.useState("");  
-  const [product, setProduct] = React.useState({});  
+ // const [product, setProduct] = React.useState({});  
   const {idproduto} = useParams();
 
   const {carrinho, setCarrinho} = useContext(UserContext);
@@ -19,9 +19,21 @@ export default function ProdutoComprar() {
     useEffect(() => {
       const request = axios.get(`https://project12parsecs.herokuapp.com/products/${idproduto}`);
       request.then( response => {
-        setProduct(response.data);
+  //      setProduct(response.data);
       })
     }, []);
+
+    let product = {
+      name: "Fone AKG",
+      images: [ 
+        "https://cf.shopee.com.br/file/267d861d99ed53f0ff73283fffd041bf",
+        "https://m.media-amazon.com/images/I/61OnK6q6skL._AC_SX425_.jpg",
+        "https://cf.shopee.com.br/file/267d861d99ed53f0ff73283fffd041bf"
+      ],
+      price: 12.92,
+      description:"limpeza geral do ambiente, a limpeza de cantos contornando todo o local, limpeza de uma área específica e limpeza geral com maior poder delimpeza geral do ambiente, a limpeza de cantos contornando todo o local, limpeza de uma área específica e limpeza geral com maior poder delimpeza geral do ambiente, a limpeza de cantos contornando todo o local, limpeza de uma área específica e limpeza geral com maior poder delimpeza geral do ambiente, a limpeza de cantos contornando todo o local, limpeza de uma área específica e limpeza geral com maior poder de",
+      id: "23213b"
+    }
 
     function recebeimg(img){
       setPrincipal(img);

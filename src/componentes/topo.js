@@ -6,7 +6,7 @@ import UserContext from "./context";
 
 export default function Topo() {
   
-  const {user} = useContext(UserContext);
+  const {user, carrinho} = useContext(UserContext);
 
     return (
       <Navbar>
@@ -40,7 +40,12 @@ export default function Topo() {
             </span>  
           </div>
           <Link to={"/checkout"}>
-          <ion-icon name="cart-outline"></ion-icon> 
+          <ion-icon name="cart-outline">
+            
+          </ion-icon> 
+          <div className="contador">
+            {carrinho.length}
+          </div>
           </Link>
       </Navbar>
     );
@@ -60,11 +65,26 @@ ion-icon{
  color: white;
  font-size: 30px;
 }
+
 .none {
   display: none;
 }
-.ola {
-  
+.contador {
+    width: 20px;
+    height: 20px;
+    position: absolute;
+    margin-top: -15px;
+    background-color: red;
+    border-radius: 10px;
+    display:flex;
+    justify-content: center;
+    align-items: center;
+   
+  font-family: 'Raleway';
+   font-style: normal;
+   font-weight: 400;
+   font-size: 16px;
+   color: #FFFFFF;
 }
 .logincadastro{
  position: absolute;
