@@ -1,6 +1,5 @@
 import { SignUp } from "./pages/SignUp";
 import { SignIn } from "./pages/SignIn";
-import { Checkout } from "./pages/Checkout";
 import { useState } from "react";
 import { Routes, Route } from "react-router-dom";
 import { BrowserRouter } from "react-router-dom";
@@ -21,7 +20,6 @@ function App() {
         <Routes>
           <Route path="/sign-up" element={<SignUp />} />
           <Route path="/sign-in" element={<SignIn />} />
-          <Route path="/checkout" element={<Checkout />} />
         </Routes>
       </BrowserRouter>
     </UserContext.Provider>
