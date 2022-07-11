@@ -71,7 +71,7 @@ function SignUp(){
                 className: 'botaoDesabilitado'
             });
         }
-        if(data.confirmaPassword !== '' && data === data.confirmaPassword){
+        if(data.confirmaPassword !== '' && data.password === data.confirmaPassword){
             setdata({
                 ...data,
                 erro: false
@@ -135,7 +135,7 @@ function SignUp(){
                     ) : null}
 
                     {loadingData.loading === false ?  (
-                        <button type="submit" className={buttonSignUp.className}>
+                        <button type="submit" className={buttonSignUp.className} disabled={buttonSignUp.desabilitado}>
                             Cadastrar
                         </button>
                     ) : (
