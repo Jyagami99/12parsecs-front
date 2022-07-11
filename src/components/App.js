@@ -1,9 +1,11 @@
-import SignUp from "./pages/SignUp";
+import { SignUp } from "./pages/SignUp";
+import { SignIn } from "./pages/SignIn";
+import { Checkout } from "./pages/Checkout";
 import { useState } from "react";
 import { Routes, Route } from "react-router-dom";
 import { BrowserRouter } from "react-router-dom";
 import GlobalStyles from "../assets/GlobalStyles";
-import SignIn from "./pages/SignIn";
+
 import UserContext from "./context/userContext";
 
 function App() {
@@ -19,6 +21,7 @@ function App() {
         <Routes>
           <Route path="/sign-up" element={<SignUp />} />
           <Route path="/sign-in" element={<SignIn />} />
+          <Route path="/checkout" element={<Checkout />} />
         </Routes>
       </BrowserRouter>
     </UserContext.Provider>
