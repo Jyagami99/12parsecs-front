@@ -1,19 +1,23 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useContext } from "react";
 import styled from 'styled-components';
 import Topo from "./topo";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import MiniImages from "./mini-images";
 import axios from "axios";
-
+import UserContext from "./context";
 
 export default function ProdutoComprar() {
   
   const [principal, setPrincipal] = React.useState("");  
   const [product, setProduct] = React.useState({});  
   const {idproduto} = useParams();
- 
+
+  const {carrinho, setCarrinho} = useContext(UserContext);
+
+  let navigate = useNavigate();
+
     useEffect(() => {
-      const request = axios.get(`http://localhost:5000/products/${idproduto}`);
+      const request = axios.get(`https://project12parsecs.herokuapp.com/products/${idproduto}`);
       request.then( response => {
         setProduct(response.data);
       })
@@ -23,6 +27,16 @@ export default function ProdutoComprar() {
       setPrincipal(img);
     }
     
+    function montarobj(){
+      const obj = {
+        name: product.name,
+        price: product.price,
+        image: product.images[0]
+      }
+      setCarrinho([...carrinho, obj]);
+      navigate("/checkout");
+    }
+
     return (
     <>
     <Topo/>
@@ -40,7 +54,7 @@ export default function ProdutoComprar() {
       <p>
         R$ {product.price}
       </p>
-      <button>
+      <button onClick={montarobj}>
         COMPRAR AGORA !
       </button>
     </Direita>

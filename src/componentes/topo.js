@@ -1,37 +1,47 @@
-import React from "react";
+import React,{ useContext } from "react";
 import styled from 'styled-components';
 import { Link } from "react-router-dom";
+import UserContext from "./context";
 
 
 export default function Topo() {
   
+  const {user} = useContext(UserContext);
+
     return (
       <Navbar>
           <Link to={"/"}>
           <ion-icon name="home-outline"></ion-icon>
           </Link>
           <h1>12 Parsecs</h1>
-          <div className="logincadastro">
-          <p>
-          <span>
-            Faça seu
-          </span>
-          <Link to={"/sign-in"}>
-          <span className="sign">
-            login 
-          </span>
-          </Link>
-          </p>  
-          <span> 
-            ou
-          </span>
-          <Link to={"/sign-up"}>
-          <span className="sign">
-            cadastre-se
-          </span>
-          </Link>
+          <div className={(user)? "none" : "logincadastro"}>
+            <p>
+              <span>
+                Faça seu
+              </span>
+              <Link to={"/sign-in"}>
+                <span className="sign">
+                  login 
+                </span>
+              </Link>
+            </p>  
+            <span> 
+              ou
+            </span>
+            <Link to={"/sign-up"}>
+              <span className="sign">
+                cadastre-se
+              </span>
+            </Link>
           </div>
+          <div className={(user)? "logincadastro" : "none"}>
+            <span>
+              Ola, {(user)? user.name : ""} 
+            </span>  
+          </div>
+          <Link to={"/checkout"}>
           <ion-icon name="cart-outline"></ion-icon> 
+          </Link>
       </Navbar>
     );
 }
@@ -49,6 +59,12 @@ background-color: black;
 ion-icon{
  color: white;
  font-size: 30px;
+}
+.none {
+  display: none;
+}
+.ola {
+  
 }
 .logincadastro{
  position: absolute;

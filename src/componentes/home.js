@@ -5,12 +5,11 @@ import Topo from "./topo.js";
 import Loader from "./loader";
 import axios from "axios"
 
-
 export default function Home() {
   
     const [clicado, setClicado] = React.useState(false);
     const [products, setProducts] = React.useState([]);   
-
+    
     function clica(){
         if(clicado){
             setClicado(false);
@@ -20,7 +19,7 @@ export default function Home() {
     }
 
     useEffect(() => {
-      const request = axios.get(`http://localhost:5000/products`);
+      const request = axios.get(`https://project12parsecs.herokuapp.com/products`);
       request.then( response => {
         setProducts(response.data);
       })
@@ -36,6 +35,9 @@ export default function Home() {
         <h1>
           Filtros
         </h1>
+        <p>
+          Em breve sera possivel selecionar filtros para sua pesquisa aqui.
+        </p>
         </div>
       </Filtros>
       <AreaProdutos>
@@ -77,6 +79,16 @@ export default function Home() {
     color: black;
     margin-left: 20px;
     margin-top: 15px;
+    }
+    p{
+      font-family: 'Raleway';
+      font-style: normal;
+      font-weight: 400;
+      font-size: 20px;
+      line-height: 31px;
+      color: black;
+      margin-left: 20px;
+      margin-top: 15px;
     }
   `;
 
