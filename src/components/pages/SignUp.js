@@ -4,6 +4,7 @@ import axios from "axios";
 import { ThreeDots } from "react-loader-spinner";
 import { Link, useNavigate } from "react-router-dom";
 import styled from "styled-components";
+import { Header } from "../Header";
 
 dotenv.config();
 
@@ -94,15 +95,7 @@ function SignUp() {
 
   return (
     <>
-      <Topo>
-        <Link to="/">
-          <ion-icon name="home-outline"></ion-icon>
-        </Link>
-        <h1>12 Parsecs</h1>
-        <Link to="/carrinho">
-          <ion-icon name="cart-outline"></ion-icon>
-        </Link>
-      </Topo>
+      <Header />
       <CadastroContainer>
         <Form onSubmit={signUp}>
           <input

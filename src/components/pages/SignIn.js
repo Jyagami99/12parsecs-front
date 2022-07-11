@@ -5,6 +5,7 @@ import { ThreeDots } from "react-loader-spinner";
 import { Link, useNavigate } from "react-router-dom";
 import styled from "styled-components";
 import UserContext from "../context/userContext";
+import { Header } from "../Header";
 
 dotenv.config();
 
@@ -64,15 +65,7 @@ function SignIn() {
 
   return (
     <>
-      <Topo>
-        <Link to="/">
-          <ion-icon name="home-outline"></ion-icon>
-        </Link>
-        <h1>12 Parsecs</h1>
-        <Link to="/carrinho">
-          <ion-icon name="cart-outline"></ion-icon>
-        </Link>
-      </Topo>
+      <Header />
       <LoginContainer>
         <Form onSubmit={login}>
           <input
