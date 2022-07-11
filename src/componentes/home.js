@@ -1,13 +1,16 @@
-import React from "react";
+import React, { useEffect } from "react";
 import styled from 'styled-components';
 import Produto from "./produto";
 import Topo from "./topo.js";
 import Loader from "./loader";
+import axios from "axios"
+
 
 export default function Home() {
   
     const [clicado, setClicado] = React.useState(false);
-     
+    const [products, setProducts] = React.useState([]);   
+
     function clica(){
         if(clicado){
             setClicado(false);
@@ -15,34 +18,13 @@ export default function Home() {
             setClicado(true);
         }
     }
-    
-    let products = [{
-      name: "Fone AKG",
-      images: [ 
-        "https://cf.shopee.com.br/file/267d861d99ed53f0ff73283fffd041bf",
-        "https://m.media-amazon.com/images/I/61OnK6q6skL._AC_SX425_.jpg",
-        "https://cf.shopee.com.br/file/267d861d99ed53f0ff73283fffd041bf"
-      ],
-      price: 12.92
-    },
-    {
-      name: "Fone AKG",
-      images: [ 
-        "https://cf.shopee.com.br/file/267d861d99ed53f0ff73283fffd041bf",
-        "https://m.media-amazon.com/images/I/61OnK6q6skL._AC_SX425_.jpg",
-        "https://cf.shopee.com.br/file/267d861d99ed53f0ff73283fffd041bf"
-      ],
-      price: 12.92
-    },
-    {
-      name: "Fone AKG",
-      images: [ 
-        "https://cf.shopee.com.br/file/267d861d99ed53f0ff73283fffd041bf",
-        "https://m.media-amazon.com/images/I/61OnK6q6skL._AC_SX425_.jpg",
-        "https://cf.shopee.com.br/file/267d861d99ed53f0ff73283fffd041bf"
-      ],
-      price: 12.92
-    }]
+
+    useEffect(() => {
+      const request = axios.get(`http://localhost:5000/products`);
+      request.then( response => {
+        setProducts(response.data);
+      })
+    }, []);
 
     return (
         <>
@@ -62,7 +44,7 @@ export default function Home() {
         </h2>
         <Produtos>
           {(products.length !==0)?
-          products.map((product, index) => <Produto key = {index} name = {product.name} image ={product.images[0]} price ={product.price}/>): <Loader/>}
+          products.map((product, index) => <Produto key = {index} name = {product.name} images ={product.images} price ={product.price} id={product.id}/>): <Loader/>}
         </Produtos>
       </AreaProdutos>
       </Container>
@@ -100,14 +82,13 @@ export default function Home() {
 
   const Container = styled.div`
     display: flex;
-
     .aparece {
         margin-left: 0px;
     }
 
   `;
   const AreaProdutos = styled.div`
-   h2{
+  h2{
     font-family: 'Raleway';
     font-style: normal;
     font-weight: 700;
@@ -121,7 +102,6 @@ export default function Home() {
 
   const Produtos = styled.div`
     display: flex;
-    position: absolute;
     flex-wrap: wrap;
     margin-left: 20px;
     margin-top: 15px;

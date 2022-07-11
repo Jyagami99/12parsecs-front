@@ -1,12 +1,24 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import styled from 'styled-components';
+import Image from "./image";
 
 export default function Produto(props) {
   
+  const [principal, setPrincipal] = React.useState("");  
   
+  function recebeimg(img){
+    setPrincipal(img);
+  }
+
     return (
     <Card>
-        <img src={props.image} alt={props.name}/>
+        <Link to= {`/produto/${props.id}`}>
+          <img src={(principal !== "")? principal : props.images[0]} alt={props.name}/>
+        </Link>
+        <div>
+        {props.images.map((img, index) => <Image key = {index} src={img} alt={props.name} voltaimg={recebeimg}/>)}
+        </div>
         <span>
             {props.name}
         </span>
@@ -33,7 +45,10 @@ const Card = styled.div`
     width: 180px;
     overflow: hidden;
     }
-
+    div {
+      display: flex;
+      margin-left: 30px;
+    }
     span {
         font-family: 'Raleway';
         font-style: normal;

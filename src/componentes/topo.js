@@ -7,7 +7,7 @@ export default function Topo() {
   
     return (
       <Navbar>
-          <Link to={""}>
+          <Link to={"/"}>
           <ion-icon name="home-outline"></ion-icon>
           </Link>
           <h1>12 Parsecs</h1>
