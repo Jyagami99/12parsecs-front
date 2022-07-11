@@ -8,7 +8,7 @@ import axios from "axios"
 export default function Home() {
   
     const [clicado, setClicado] = React.useState(false);
-  //  const [products, setProducts] = React.useState([]);   
+    const [products, setProducts] = React.useState([]);   
     
     function clica(){
         if(clicado){
@@ -21,40 +21,9 @@ export default function Home() {
     useEffect(() => {
       const request = axios.get(`https://project12parsecs.herokuapp.com/products`);
       request.then( response => {
-    //    setProducts(response.data);
+        setProducts(response.data);
       })
     }, []);
-    
-    let products = [{
-      name: "Fone AKG",
-      images: [ 
-        "https://cf.shopee.com.br/file/267d861d99ed53f0ff73283fffd041bf",
-        "https://m.media-amazon.com/images/I/61OnK6q6skL._AC_SX425_.jpg",
-        "https://cf.shopee.com.br/file/267d861d99ed53f0ff73283fffd041bf"
-      ],
-      price: 12.92,
-      id: "23213b"
-    },
-    {
-      name: "Fone AKG",
-      images: [ 
-        "https://cf.shopee.com.br/file/267d861d99ed53f0ff73283fffd041bf",
-        "https://m.media-amazon.com/images/I/61OnK6q6skL._AC_SX425_.jpg",
-        "https://cf.shopee.com.br/file/267d861d99ed53f0ff73283fffd041bf"
-      ],
-      price: 12.92,
-      id: "23213b"
-    },
-    {
-      name: "Fone AKG",
-      images: [ 
-        "https://cf.shopee.com.br/file/267d861d99ed53f0ff73283fffd041bf",
-        "https://m.media-amazon.com/images/I/61OnK6q6skL._AC_SX425_.jpg",
-        "https://cf.shopee.com.br/file/267d861d99ed53f0ff73283fffd041bf"
-      ],
-      price: 12.92,
-      id: "23213b"
-    }]
 
     return (
         <>
