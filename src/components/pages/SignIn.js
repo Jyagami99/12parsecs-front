@@ -118,31 +118,6 @@ const LoginContainer = styled.div`
   }
 `;
 
-const Topo = styled.header`
-  display: fixed;
-  height: 60px;
-  width: 100%;
-  margin: auto;
-  display: flex;
-  justify-content: space-around;
-  align-items: center;
-  background-color: black;
-
-  ion-icon {
-    color: white;
-    font-size: 30px;
-  }
-
-  h1 {
-    font-family: "Raleway";
-    font-style: normal;
-    font-weight: 700;
-    font-size: 26px;
-    line-height: 31px;
-    color: #ffffff;
-  }
-`;
-
 const Form = styled.form`
   display: flex;
   flex-direction: column;
